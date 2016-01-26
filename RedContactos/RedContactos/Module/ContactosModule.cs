@@ -25,11 +25,21 @@ namespace RedContactos.Module
                 SingleInstance();
             builder.RegisterType<LoginView>().SingleInstance();
             builder.RegisterType<LoginViewModel>().SingleInstance();
+
             builder.RegisterType<Alta>().SingleInstance();
             builder.RegisterType<AltaViewModel>().SingleInstance();
-            builder.RegisterType<ContactosView>().SingleInstance();
-            builder.RegisterType<ContactosViewModel>().SingleInstance();
 
+            builder.RegisterType<PrincipalView>().SingleInstance();
+            builder.RegisterType<PrincipalViewModel>().SingleInstance();
+
+            builder.RegisterType<ListadoContactosView>().SingleInstance();
+            builder.RegisterType<ListadoContactosViewModel>().SingleInstance();
+            
+            builder.RegisterType<AddContactosView>().SingleInstance();
+            builder.RegisterType<AddContactosViewModel>().SingleInstance();
+
+            builder.RegisterType<EnviarMensajeView>().SingleInstance();
+            builder.RegisterType<EnviarMensajeViewModel>().SingleInstance();
         }
     }
 }

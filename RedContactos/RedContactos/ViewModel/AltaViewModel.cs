@@ -2,6 +2,7 @@
 using ContactosModel.Model;
 using MvvmLibrary.Factorias;
 using RedContactos.Service;
+using RedContactos.Util;
 using Xamarin.Forms;
 
 namespace RedContactos.ViewModel
@@ -16,7 +17,8 @@ namespace RedContactos.ViewModel
         }
 
         public ICommand CmdAlta { get; set; }
-        public AltaViewModel(INavigator navigator, IServicioMovil servicio) : base(navigator, servicio)
+        public AltaViewModel(INavigator navigator, IServicioMovil servicio, Session session) : 
+            base(navigator, servicio, session)
         {
             _usuario=new UsuarioModel();
             CmdAlta=new Command(RunAlta);
@@ -35,7 +37,7 @@ namespace RedContactos.ViewModel
                     if (r != null)
                     {
                         await _navigator.
-                            PushAsync<ContactosViewModel>(viewModel =>
+                            PushAsync<PrincipalViewModel>(viewModel =>
                         {
                             Titulo = "Tus contactos";
                         });

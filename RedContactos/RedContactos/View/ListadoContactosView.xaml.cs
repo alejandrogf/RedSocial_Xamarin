@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace RedContactos.View
 {
-    public partial class ContactosView : ContentPage
+    public partial class ListadoContactosView : ContentPage
     {
-        public ContactosView()
+        public ListadoContactosView()
         {
             InitializeComponent();
         }

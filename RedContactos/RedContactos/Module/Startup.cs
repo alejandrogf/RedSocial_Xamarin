@@ -24,9 +24,12 @@ namespace RedContactos.Module
 
         protected override void RegisterViews(IViewFactory viewFactory)
         {
-            viewFactory.Register<LoginViewModel, LoginView>();
-            viewFactory.Register<AltaViewModel, Alta>();
-            viewFactory.Register<ContactosViewModel, ContactosView>();
+            viewFactory.Register <LoginViewModel, LoginView>();
+            viewFactory.Register <AltaViewModel, Alta>();
+            viewFactory.Register <PrincipalViewModel, PrincipalView>();
+            viewFactory.Register <ListadoContactosViewModel, ListadoContactosView>();
+            viewFactory.Register <AddContactosViewModel, AddContactosView>();
+            viewFactory.Register <EnviarMensajeViewModel,EnviarMensajeView>();
         }
 
         protected override void ConfigureApplication(IContainer container)

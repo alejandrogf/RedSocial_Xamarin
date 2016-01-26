@@ -3,6 +3,7 @@ using System.Windows.Input;
 using ContactosModel.Model;
 using MvvmLibrary.Factorias;
 using RedContactos.Service;
+using RedContactos.Util;
 using Xamarin.Forms;
 
 namespace RedContactos.ViewModel
@@ -17,11 +18,13 @@ namespace RedContactos.ViewModel
         }
         public ICommand CmdLogin { get; set; }
         public ICommand CmdAlta { get; set; }
-        public LoginViewModel(INavigator navigator, IServicioMovil servicio) : base(navigator, servicio)
+        public LoginViewModel(INavigator navigator, IServicioMovil servicio, Session session) : 
+            base(navigator, servicio, session)
         {
             _usuario=new UsuarioModel();
             CmdLogin=new Command(RunLogin);
             CmdAlta=new Command(RunAlta);
+            Titulo = "Contacteitor";
         }
 
         private async void RunLogin()
@@ -32,10 +35,10 @@ namespace RedContactos.ViewModel
                 var us=await _servicio.ValidarUsuario(Usuario);
                 if (us != null)
                 {
-                  await  _navigator.PushAsync<ContactosViewModel>(
-                      viewModel =>
+                    Session["usuario"] = us;//Guardo el usuario
+                    await  _navigator.PushAsync<PrincipalViewModel>(viewModel =>
                     {
-                        Titulo = "Tus contactos";
+                        viewModel.Titulo = "Principal";
                     });
                 }
                 else
@@ -53,7 +56,7 @@ namespace RedContactos.ViewModel
         {
             await _navigator.PushAsync<AltaViewModel>(viewModel =>
             {
-                Titulo = "Nuevo usuario";
+                viewModel.Titulo = "Nuevo usuario";
             });
         }
 
