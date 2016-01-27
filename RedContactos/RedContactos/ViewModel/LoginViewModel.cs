@@ -18,8 +18,8 @@ namespace RedContactos.ViewModel
         }
         public ICommand CmdLogin { get; set; }
         public ICommand CmdAlta { get; set; }
-        public LoginViewModel(INavigator navigator, IServicioMovil servicio, Session session) : 
-            base(navigator, servicio, session)
+        public LoginViewModel(INavigator navigator, IServicioMovil servicio, Session session, IPage page) :
+            base(navigator, servicio, session, page)
         {
             _usuario=new UsuarioModel();
             CmdLogin=new Command(RunLogin);

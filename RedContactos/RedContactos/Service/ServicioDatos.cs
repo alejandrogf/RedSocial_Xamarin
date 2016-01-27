@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using ContactosModel.Model;
 using RedContactos.Util;
@@ -63,19 +64,99 @@ namespace RedContactos.Service
         #endregion
 
 
-        public Task AddContacto(UsuarioModel usuario)
+        #region CONTACTO
+
+        public async Task<ContactoModel> AddContacto(ContactoModel contacto)
         {
-            throw new System.NotImplementedException();
+            var request = new RestRequest("Contactos")
+            {
+                Method = Method.POST
+            };
+            request.AddJsonBody(contacto);
+            var response = await client.Execute<ContactoModel>(request);
+            if (response.IsSuccess)
+            {
+                return response.Data;
+            }
+            return null;
         }
 
-        public Task<List<ContactoModel>> GetContactos(UsuarioModel usuario, ContactoModel contacto)
+        public async Task<List<ContactoModel>> GetContactos(bool actuales, int id)
         {
-            throw new System.NotImplementedException();
+            var request = new RestRequest("Contactos")
+            {
+                Method = Method.GET
+            };
+
+            request.AddQueryParameter("id", id);
+            request.AddQueryParameter("amigos", actuales);
+
+            var response = await client.Execute<List<ContactoModel>>(request);
+            if (response.IsSuccess)
+            {
+                return response.Data;
+            }
+            return null;
         }
 
-        public Task SendMensaje(UsuarioModel usuario, ContactoModel contacto, MensajeModel mensaje)
+        public async Task DelContacto(ContactoModel contacto)
         {
-            throw new System.NotImplementedException();
+            var request=new RestRequest("Contactos")
+            {
+                Method = Method.DELETE
+            };
+            request.AddJsonBody(contacto);
+            await client.Execute(request);
         }
+
+        #endregion
+
+
+        #region MENSAJE
+
+        public async Task<List<MensajeModel>> GetMensaje(int id)
+        {
+            var request = new RestRequest("Mensaje")
+            {
+                Method = Method.GET
+            };
+
+            request.AddQueryParameter("id", id);
+            
+            var response = await client.Execute<List<MensajeModel>>(request);
+            if (response.IsSuccess)
+            {
+                return response.Data;
+            }
+            return null;
+        }
+
+        public async Task<MensajeModel> AddMensaje(MensajeModel mensaje)
+        {
+            var request = new RestRequest("Mensaje")
+            {
+                Method = Method.POST
+            };
+            request.AddJsonBody(mensaje);
+            var response = await client.Execute<MensajeModel>(request);
+            if (response.IsSuccess)
+            {
+                return response.Data;
+            }
+            return null;
+        }
+
+        public async Task UpdateMensaje(MensajeModel mensaje)
+        {
+            var request = new RestRequest("Mensaje")
+            {
+                Method = Method.PUT
+            };
+            request.AddJsonBody(mensaje);
+            await client.Execute<MensajeModel>(request);
+        }
+
+        #endregion
+
     }
 }

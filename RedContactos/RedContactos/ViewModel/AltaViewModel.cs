@@ -17,8 +17,8 @@ namespace RedContactos.ViewModel
         }
 
         public ICommand CmdAlta { get; set; }
-        public AltaViewModel(INavigator navigator, IServicioMovil servicio, Session session) : 
-            base(navigator, servicio, session)
+        public AltaViewModel(INavigator navigator, IServicioMovil servicio, Session session, IPage page) :
+            base(navigator, servicio, session, page)
         {
             _usuario=new UsuarioModel();
             CmdAlta=new Command(RunAlta);

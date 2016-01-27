@@ -43,10 +43,12 @@
     <Compile Include="Service\ServicioDatos.cs" />
     <Compile Include="Util\Cadenas.cs" />
     <Compile Include="Util\Session.cs" />
-    <Compile Include="ViewModel\AddContactosViewModel.cs" />
+    <Compile Include="ViewModel\Contactos\AddContactosViewModel.cs" />
     <Compile Include="ViewModel\AltaViewModel.cs" />
-    <Compile Include="ViewModel\EnviarMensajeViewModel.cs" />
-    <Compile Include="ViewModel\ListadoContactosViewModel.cs" />
+    <Compile Include="ViewModel\Contactos\EnviarMensajeViewModel.cs" />
+    <Compile Include="ViewModel\Mensajes\DetalleMensajeViewModel.cs" />
+    <Compile Include="ViewModel\Contactos\ContactosViewModel.cs" />
+    <Compile Include="ViewModel\Mensajes\MisMensajesViewModel.cs" />
     <Compile Include="ViewModel\PrincipalViewModel.cs" />
     <Compile Include="ViewModel\GeneralViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -59,8 +61,8 @@
     <Compile Include="View\EnviarMensajeView.xaml.cs">
       <DependentUpon>EnviarMensajeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ListadoContactosView.xaml.cs">
-      <DependentUpon>ListadoContactosView.xaml</DependentUpon>
+    <Compile Include="View\ContactosView.xaml.cs">
+      <DependentUpon>ContactosView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PrincipalView.xaml.cs">
       <DependentUpon>PrincipalView.xaml</DependentUpon>
@@ -145,7 +147,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="View\ListadoContactosView.xaml">
+    <EmbeddedResource Include="View\ContactosView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

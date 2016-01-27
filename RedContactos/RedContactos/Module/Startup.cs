@@ -3,6 +3,8 @@ using MvvmLibrary.Factorias;
 using MvvmLibrary.ModuloBase;
 using RedContactos.View;
 using RedContactos.ViewModel;
+using RedContactos.ViewModel.Contactos;
+using RedContactos.ViewModel.Mensajes;
 using Xamarin.Forms;
 
 namespace RedContactos.Module
@@ -27,9 +29,9 @@ namespace RedContactos.Module
             viewFactory.Register <LoginViewModel, LoginView>();
             viewFactory.Register <AltaViewModel, Alta>();
             viewFactory.Register <PrincipalViewModel, PrincipalView>();
-            viewFactory.Register <ListadoContactosViewModel, ListadoContactosView>();
+            viewFactory.Register <ContactosViewModel, ContactosView>();
             viewFactory.Register <AddContactosViewModel, AddContactosView>();
-            viewFactory.Register <EnviarMensajeViewModel,EnviarMensajeView>();
+            viewFactory.Register <DetalleMensajeViewModel,EnviarMensajeView>();
         }
 
         protected override void ConfigureApplication(IContainer container)
