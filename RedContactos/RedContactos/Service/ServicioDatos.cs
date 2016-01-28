@@ -24,8 +24,8 @@ namespace RedContactos.Service
             var request = new RestRequest("Usuario");
 
             request.Method = Method.GET;
-            request.AddQueryParameter("login", usuario.login);
-            request.AddQueryParameter("password", usuario.password);
+            request.AddQueryParameter("login", usuario.Login);
+            request.AddQueryParameter("password", usuario.Password);
 
             var response = await client.Execute<UsuarioModel>(request);
             if (response.IsSuccess)
@@ -68,7 +68,7 @@ namespace RedContactos.Service
 
         public async Task<ContactoModel> AddContacto(ContactoModel contacto)
         {
-            var request = new RestRequest("Contactos")
+            var request = new RestRequest("Contacto")
             {
                 Method = Method.POST
             };
@@ -83,7 +83,7 @@ namespace RedContactos.Service
 
         public async Task<List<ContactoModel>> GetContactos(bool actuales, int id)
         {
-            var request = new RestRequest("Contactos")
+            var request = new RestRequest("Contacto")
             {
                 Method = Method.GET
             };
@@ -101,7 +101,7 @@ namespace RedContactos.Service
 
         public async Task DelContacto(ContactoModel contacto)
         {
-            var request=new RestRequest("Contactos")
+            var request=new RestRequest("Contacto")
             {
                 Method = Method.DELETE
             };

@@ -43,17 +43,17 @@ namespace RedContactos.ViewModel.Contactos
             {
                 IsBusy = true;
                 Mensaje.idOrigen = Contacto.idOrigen;
-                Mensaje.fecha = DateTime.Now;
+                Mensaje.Fecha = DateTime.Now;
                 Mensaje.idDestino = Contacto.idDestino;
-                Mensaje.leido = false;
+                Mensaje.Leido = false;
                 var r = await _servicio.AddMensaje(Mensaje);
                 if (r != null)
                 {
-                    //TODO: Meter el dialogo
+                    await _page.MostrarAlerta("Exito", "Mensaje enviado", "Aceptar");
                 }
                 else
                 {
-
+                    await _page.MostrarAlerta("Error", "Mensaje no enviado", "Aceptar");
                 }
             }
             finally

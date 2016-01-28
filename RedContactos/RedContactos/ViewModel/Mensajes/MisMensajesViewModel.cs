@@ -33,15 +33,17 @@ namespace RedContactos.ViewModel.Mensajes
             get { return _mensajeSeleccionado; }
             set
             {
+                SetProperty(ref _mensajeSeleccionado, value);
                 if (value!=null)
                 {
+                    
                     /*Así se llama automáticamente a ver el detalle
                     Si no, habría que tener un botón que pulsar después de seleccionar un mensaje
                     Y como al volver se ha pasado antes por poner mensajeseleccionado==null
                     no vuelve a lanzar este evento*/
                     VerDetalleMensaje();
                 }
-                SetProperty( ref _mensajeSeleccionado, value);
+                
             }
         }
 
@@ -49,16 +51,16 @@ namespace RedContactos.ViewModel.Mensajes
         {
             if (_mensajeSeleccionado!=null)
             {
-                if (!_mensajeSeleccionado.leido)
+                if (!_mensajeSeleccionado.Leido)
                 {
-                    _mensajeSeleccionado.leido = true;
+                    _mensajeSeleccionado.Leido = true;
                     await _servicio.UpdateMensaje(_mensajeSeleccionado);
                 }
 
                 await _navigator.PushAsync<DetalleMensajeViewModel>(viewmodel =>
                 {
                     viewmodel.Mensaje = _mensajeSeleccionado;
-                    viewmodel.Titulo = _mensajeSeleccionado.asunto;
+                    viewmodel.Titulo = _mensajeSeleccionado.Asunto;
                 });
                 //Para al volver no haya ninguno seleccionado y poder elegir otro.
                 MensajeSeleccionado = null;

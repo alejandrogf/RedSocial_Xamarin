@@ -5,10 +5,10 @@
              Title="{Binding Titulo}">
   <StackLayout>
     <Label Text="Login"></Label>
-    <Entry Text="{Binding Usuario.login}"></Entry>
+    <Entry Text="{Binding Usuario.Login}"></Entry>
     <Label Text="Password"></Label>
-    <Entry Text="{Binding Usuario.password}"></Entry>
-    <Button Text="Enviar"></Button>
-    <Button Text="Nuevo"></Button>
+    <Entry Text="{Binding Usuario.Password}"></Entry>
+    <Button Text="Enviar" Command="{Binding CmdLogin}"></Button>
+    <Button Text="Nuevo" Command="{Binding CmdAlta}"></Button>
   </StackLayout>
 </ContentPage>

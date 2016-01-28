@@ -38,12 +38,12 @@ namespace RedContactos.ViewModel
                     Session["usuario"] = us;//Guardo el usuario
                     await  _navigator.PushAsync<PrincipalViewModel>(viewModel =>
                     {
-                        viewModel.Titulo = "Principal";
+                        viewModel.Titulo = "Contacteitor";
                     });
                 }
                 else
                 {
-                    //TODo: Informar
+                   await _page.MostrarAlerta("Error", "Login incorrecto", "Aceptar");
                 }
             }
             finally

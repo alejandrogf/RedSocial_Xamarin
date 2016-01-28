@@ -2,11 +2,16 @@
 using Autofac;
 using MvvmLibrary.Factorias;
 using RedContactos.Service;
+using RedContactos.Util;
 using RedContactos.View;
+using RedContactos.View.Mensajes;
 using RedContactos.ViewModel;
 using RedContactos.ViewModel.Contactos;
 using RedContactos.ViewModel.Mensajes;
 using Xamarin.Forms;
+using AddContactosView = RedContactos.View.Contactos.AddContactosView;
+using ContactoView = RedContactos.View.Contactos.ContactoView;
+using EnviarMensajeView = RedContactos.View.Contactos.EnviarMensajeView;
 
 namespace RedContactos.Module
 {
@@ -32,6 +37,8 @@ namespace RedContactos.Module
             builder.RegisterType<ServicioDatos>().As<IServicioMovil>().
                 SingleInstance();
 
+            builder.RegisterType<Session>().SingleInstance();
+
             builder.RegisterType<LoginView>().SingleInstance();
             builder.RegisterType<LoginViewModel>().SingleInstance();
 
@@ -41,14 +48,20 @@ namespace RedContactos.Module
             builder.RegisterType<PrincipalView>().SingleInstance();
             builder.RegisterType<PrincipalViewModel>().SingleInstance();
 
-            builder.RegisterType<ContactosView>().SingleInstance();
+            builder.RegisterType<ContactoView>().SingleInstance();
             builder.RegisterType<ContactosViewModel>().SingleInstance();
             
             builder.RegisterType<AddContactosView>().SingleInstance();
             builder.RegisterType<AddContactosViewModel>().SingleInstance();
 
             builder.RegisterType<EnviarMensajeView>().SingleInstance();
+            builder.RegisterType<EnviarMensajeViewModel>().SingleInstance();
+
+            builder.RegisterType<DetalleMensajeView>().SingleInstance();
             builder.RegisterType<DetalleMensajeViewModel>().SingleInstance();
+
+            builder.RegisterType<MisMensajesView>().SingleInstance();
+            builder.RegisterType<MisMensajesViewModel>().SingleInstance();
         }
     }
 }

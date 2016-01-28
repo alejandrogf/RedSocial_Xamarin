@@ -30,18 +30,26 @@ namespace RedContactos.ViewModel
             {
                 IsBusy = true;
                 var noesta = await _servicio.
-                                UsuarioNuevo(Usuario.login);
+                                UsuarioNuevo(Usuario.Login);
                 if (noesta)
                 {
                     var r = await _servicio.AddUsuario(Usuario);
                     if (r != null)
                     {
-                        await _navigator.
-                            PushAsync<PrincipalViewModel>(viewModel =>
+                        Session["usuario"] = r;//Guardo el usuario
+                        await _navigator.PushAsync<PrincipalViewModel>(viewModel =>
                         {
-                            Titulo = "Tus contactos";
+                            Titulo = "Contacteitor";
                         });
                     }
+                    else
+                    {
+                        await _page.MostrarAlerta("Error", "Error al registrarse", "Aceptar");
+                    }
+                }
+                else
+                {
+                    await _page.MostrarAlerta("Error", "Usuario ya registrado", "Aceptar");
                 }
             }
             finally

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace RedContactos.View
+namespace RedContactos.View.Contactos
 {
     public partial class EnviarMensajeView : ContentPage
     {
