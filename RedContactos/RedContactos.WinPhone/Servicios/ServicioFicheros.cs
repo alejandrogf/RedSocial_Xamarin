@@ -6,7 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using RedContactos.Service;
+using RedContactos.WinPhone.Servicios;
+using Xamarin.Forms;
+
 //windows phone es asincrono al completo
+[assembly: Dependency(typeof(ServicioFicheros))]
 namespace RedContactos.WinPhone.Servicios
 {
     public class ServicioFicheros:IServicioFicheros
