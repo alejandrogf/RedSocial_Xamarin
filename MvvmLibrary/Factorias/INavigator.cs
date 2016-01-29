@@ -17,7 +17,5 @@ namespace MvvmLibrary.Factorias
             where TViewModel : class, IViewModel;
         Task<TViewModel> PushModalAsync<TViewModel>(TViewModel viewModel)
             where TViewModel : class, IViewModel;
-
-
     }
 }
