@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using ContactosModel.Model;
 using MvvmLibrary.Factorias;
+using RedContactos.Models;
 using RedContactos.Service;
 using RedContactos.Util;
 using Xamarin.Forms;
@@ -21,7 +22,7 @@ namespace RedContactos.ViewModel.Contactos
             set { SetProperty(ref _amigos, value); }
         }
 
-        public ObservableCollection<ContactoModel> NoAmigos
+        public ObservableCollection<NoAmigosModel> NoAmigos
         {
             get { return _noAmigos; }
             set { SetProperty(ref _noAmigos, value); }
@@ -37,27 +38,25 @@ namespace RedContactos.ViewModel.Contactos
                 {
                     RunNuevoMensaje();
                 }
-                
             }
         }
 
-        //public ICommand cmdNuevo { get; set; }
+        public ICommand cmdNuevo { get; set; }
 
         public ContactosViewModel(INavigator navigator, IServicioMovil servicio, Session session, IPage page) :
             base(navigator, servicio, session, page)
         {
-            //cmdNuevo = new Command(RunNuevoContacto);
-
+            cmdNuevo = new Command(RunNuevoContacto);
         }
 
-        //private async void RunNuevoContacto()
-        //{
-        //    await _navigator.PushAsync<AddContactosViewModel>(viewModel =>
-        //    {
-        //        viewModel.Amigos = Amigos;
-        //        viewModel.NoAmigos = NoAmigos;
-        //    });
-        //}
+        private async void RunNuevoContacto()
+        {
+            await _navigator.PushAsync<AddContactosViewModel>(viewModel =>
+            {
+                viewModel.Amigos = Amigos;
+                viewModel.NoAmigos = NoAmigos;
+            });
+        }
 
         private async void RunNuevoMensaje()
         {
@@ -67,8 +66,7 @@ namespace RedContactos.ViewModel.Contactos
                 viewModel.Mensaje=new MensajeModel();
                 
             });
+            ContactoSeleccionado = null;
         }
-
-
     }
 }

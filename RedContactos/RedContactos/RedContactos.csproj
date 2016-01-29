@@ -37,9 +37,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Models\NoAmigosModel.cs" />
     <Compile Include="Module\ContactosModule.cs" />
     <Compile Include="Module\Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\IServicioFicheros.cs" />
     <Compile Include="Service\IServicioMovil.cs" />
     <Compile Include="Service\ServicioDatos.cs" />
     <Compile Include="Util\Cadenas.cs" />

@@ -1,14 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RedContactos.View.LoginView"
              Title="{Binding Titulo}">
-  <StackLayout>
-    <Label Text="Login"></Label>
-    <Entry Text="{Binding Usuario.Login}"></Entry>
-    <Label Text="Password"></Label>
-    <Entry Text="{Binding Usuario.Password}"></Entry>
-    <Button Text="Enviar" Command="{Binding CmdLogin}"></Button>
-    <Button Text="Nuevo" Command="{Binding CmdAlta}"></Button>
-  </StackLayout>
+
+    <StackLayout Opacity="{Binding Opacity, Mode=TwoWay}"
+                 IsEnabled="{Binding Enabled,Mode=TwoWay}"
+                 VerticalOptions="FillAndExpand">
+        <Label Text="Login" />
+        <Entry Text="{Binding Usuario.Login}" />
+        <Label Text="Password" />
+        <Entry Text="{Binding Usuario.Password}" />
+        <Button Text="Enviar" Command="{Binding CmdLogin}" />
+        <Button Text="Nuevo" Command="{Binding CmdAlta}" />
+
+        <RelativeLayout>
+            <ActivityIndicator IsVisible="{Binding IsBusy,Mode=TwoWay}"
+                               IsRunning="{Binding IsBusy,Mode=TwoWay}"
+                               VerticalOptions="CenterAndExpand"
+                               RelativeLayout.XConstraint="{ConstraintExpression 
+                                                    Type=RelativeToParent,Property=Height,Factor=20}"
+                               RelativeLayout.YConstraint="{ConstraintExpression 
+                                                    Type=RelativeToParent,Property=Height,Factor=20}">
+            </ActivityIndicator>
+        </RelativeLayout>
+    </StackLayout>
 </ContentPage>

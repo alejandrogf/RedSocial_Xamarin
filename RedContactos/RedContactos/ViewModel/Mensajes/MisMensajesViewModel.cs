@@ -14,20 +14,13 @@ namespace RedContactos.ViewModel.Mensajes
     public class MisMensajesViewModel:GeneralViewModel
     {
         private ObservableCollection<MensajeModel> _mensajes;
-
-        private MensajeModel _mensajeSeleccionado;
-
-        public MisMensajesViewModel(INavigator navigator, IServicioMovil servicio, Session session, IPage page) :
-            base(navigator, servicio, session, page)
-        {
-        }
-
         public ObservableCollection<MensajeModel> Mensajes
         {
             get { return _mensajes; }
-            set { SetProperty(ref _mensajes, value);}
+            set { SetProperty(ref _mensajes, value); }
         }
 
+        private MensajeModel _mensajeSeleccionado;
         public MensajeModel MensajeSeleccionado
         {
             get { return _mensajeSeleccionado; }
@@ -36,15 +29,18 @@ namespace RedContactos.ViewModel.Mensajes
                 SetProperty(ref _mensajeSeleccionado, value);
                 if (value!=null)
                 {
-                    
                     /*Así se llama automáticamente a ver el detalle
                     Si no, habría que tener un botón que pulsar después de seleccionar un mensaje
                     Y como al volver se ha pasado antes por poner mensajeseleccionado==null
                     no vuelve a lanzar este evento*/
                     VerDetalleMensaje();
                 }
-                
             }
+        }
+
+        public MisMensajesViewModel(INavigator navigator, IServicioMovil servicio, Session session, IPage page) :
+                                    base(navigator, servicio, session, page)
+        {
         }
 
         private async void VerDetalleMensaje()

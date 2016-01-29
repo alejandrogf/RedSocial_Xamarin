@@ -16,12 +16,12 @@ namespace RedContactos.ViewModel
             set { SetProperty(ref _usuario, value); }
         }
 
-        public ICommand CmdAlta { get; set; }
+        public ICommand cmdAlta { get; set; }
         public AltaViewModel(INavigator navigator, IServicioMovil servicio, Session session, IPage page) :
             base(navigator, servicio, session, page)
         {
             _usuario=new UsuarioModel();
-            CmdAlta=new Command(RunAlta);
+            cmdAlta=new Command(RunAlta);
         }
 
         private async void RunAlta()
@@ -29,8 +29,7 @@ namespace RedContactos.ViewModel
             try
             {
                 IsBusy = true;
-                var noesta = await _servicio.
-                                UsuarioNuevo(Usuario.Login);
+                var noesta = await _servicio.UsuarioNuevo(Usuario.Login);
                 if (noesta)
                 {
                     var r = await _servicio.AddUsuario(Usuario);

@@ -14,9 +14,9 @@ namespace RedContactos.ViewModel
         //Aquí que es de el que heredan todos los viewmodel
 
         protected INavigator _navigator;
-        protected IServicioMovil _servicio;
-        protected Session Session { get; set; }
-        protected IPage _page;
+        public IServicioMovil _servicio;
+        public Session Session { get; set; }
+        public IPage _page;
 
         public GeneralViewModel(INavigator navigator, IServicioMovil servicio, Session session, IPage page)
         {

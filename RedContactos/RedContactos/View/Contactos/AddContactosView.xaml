@@ -16,12 +16,10 @@
         <ViewCell>
           <ViewCell.ContextActions>
             <MenuItem Text="Añadir"
-                      Command="cmdAdd"
-                      CommandParameter="{Binding idDestino}"
-                      IsDestructive="True"></MenuItem>
+                      Command="{Binding CmdAdd}"/>
           </ViewCell.ContextActions>
           <StackLayout>
-            <Label Text="{Binding nombreCompleto}"></Label>
+            <Label Text="{Binding ContactoModel.nombreCompleto}"/>
           </StackLayout>
         </ViewCell>
       </DataTemplate>
